@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .medium
-    return dateFormatter
-}()
 
 struct ContentView: View {
     @Environment(\.managedObjectContext)
@@ -27,7 +21,7 @@ struct ContentView: View {
                     leading: EditButton(),
                     trailing: Button(
                         action: {
-                            withAnimation { Event.create(in: self.viewContext) }
+                            withAnimation { ImageModel.create(in: self.viewContext) }
                         }
                     ) { 
                         Image(systemName: "plus")
@@ -41,33 +35,34 @@ struct ContentView: View {
 
 struct MasterView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)], 
+        sortDescriptors: [],
         animation: .default)
-    var events: FetchedResults<Event>
+    var images: FetchedResults<ImageModel>
 
     @Environment(\.managedObjectContext)
     var viewContext
 
     var body: some View {
         List {
-            ForEach(events, id: \.self) { event in
+            ForEach(images, id: \.self) { imageModel in
                 NavigationLink(
-                    destination: DetailView(event: event)
+                    destination: DetailView(imageModel: imageModel)
                 ) {
-                    Text("\(event.timestamp!, formatter: dateFormatter)")
+                    Text("\(imageModel.name!)")
                 }
-            }.onDelete { indices in
-                self.events.delete(at: indices, from: self.viewContext)
             }
+//            .onDelete { indices in
+//                self.images.delete(at: indices, from: self.viewContext)
+//            }
         }
     }
 }
 
 struct DetailView: View {
-    @ObservedObject var event: Event
+    @ObservedObject var imageModel: ImageModel
 
     var body: some View {
-        Text("\(event.timestamp!, formatter: dateFormatter)")
+        Text("\(imageModel.name!)")
             .navigationBarTitle("Detail")
     }
 }

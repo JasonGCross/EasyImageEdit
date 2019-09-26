@@ -15,6 +15,7 @@
 		F696C7C8233D182600B43374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F696C7C7233D182600B43374 /* Assets.xcassets */; };
 		F696C7CB233D182600B43374 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F696C7CA233D182600B43374 /* Preview Assets.xcassets */; };
 		F696C7CE233D182600B43374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F696C7CC233D182600B43374 /* LaunchScreen.storyboard */; };
+		F696C7D6233D1B1700B43374 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696C7D5233D1B1700B43374 /* ImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F696C7CA233D182600B43374 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F696C7CD233D182600B43374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F696C7CF233D182600B43374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F696C7D5233D1B1700B43374 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				F696C7CF233D182600B43374 /* Info.plist */,
 				F696C7BE233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld */,
 				F696C7C9233D182600B43374 /* Preview Content */,
+				F696C7D5233D1B1700B43374 /* ImageModel.swift */,
 			);
 			path = LiveSurfaceImageEditor;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F696C7C4233D182500B43374 /* Event.swift in Sources */,
+				F696C7D6233D1B1700B43374 /* ImageModel.swift in Sources */,
 				F696C7C6233D182500B43374 /* ContentView.swift in Sources */,
 				F696C7C0233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld in Sources */,
 				F696C7BD233D182500B43374 /* AppDelegate.swift in Sources */,
@@ -304,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jasongcross.LiveSurfaceImageEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -324,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jasongcross.LiveSurfaceImageEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
