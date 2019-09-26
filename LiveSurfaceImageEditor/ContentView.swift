@@ -41,20 +41,10 @@ struct MasterView: View {
 
     @Environment(\.managedObjectContext)
     var viewContext
+    
 
     var body: some View {
-        List {
-            ForEach(images, id: \.self) { imageModel in
-                NavigationLink(
-                    destination: DetailView(imageModel: imageModel)
-                ) {
-                    Text("\(imageModel.name!)")
-                }
-            }
-//            .onDelete { indices in
-//                self.images.delete(at: indices, from: self.viewContext)
-//            }
-        }
+        CollectionViewOfCards(images:Array(images))
     }
 }
 
@@ -72,5 +62,54 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         return ContentView().environment(\.managedObjectContext, context)
+    }
+}
+
+/// A row of cards just displays cards in a horizontal stack
+struct RowOfCards: View {
+    var images : Array<ImageModel>
+    
+    var body: some View {
+        HStack {
+            ForEach(images, id: \.uuid) { imageModel in
+                Text("\(imageModel.name!)")
+            }
+        }
+    }
+}
+
+struct CollectionViewOfCards : View {
+    var images: Array<ImageModel>
+    
+    let maxNumberOfCardsPerRow = 2
+    
+    var body: some View {
+        var row : Int = 0
+        
+        var rowData : Array<ImageModel> = Array<ImageModel>()
+        return List {
+            ForEach(images, id: \.self) { imageModel -> RowOfCards? in
+                guard let index = self.images.firstIndex(of: imageModel) else {
+                    return nil
+                }
+                let cardPositionInRow = index - row
+                
+                if cardPositionInRow < self.maxNumberOfCardsPerRow {
+                    rowData.append(imageModel)
+                }
+                else {
+                    row += 1
+                    rowData = Array<ImageModel>()
+                }
+                
+                // only return when at the end of the array
+                // or at the end of a row
+                if (index == (self.images.count - 1)) ||
+                    (cardPositionInRow == (self.maxNumberOfCardsPerRow - 1)) {
+                    return RowOfCards(images: rowData)
+                }
+                return nil
+            }
+        }
     }
 }
