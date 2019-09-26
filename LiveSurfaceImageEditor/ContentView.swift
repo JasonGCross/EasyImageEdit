@@ -92,20 +92,18 @@ struct CollectionViewOfCards : View {
                 guard let index = self.images.firstIndex(of: imageModel) else {
                     return nil
                 }
-                let cardPositionInRow = index - row
                 
-                if cardPositionInRow < self.maxNumberOfCardsPerRow {
-                    rowData.append(imageModel)
-                }
-                else {
+                let thisIsTheStartOfANewRow = 0 == (index % self.maxNumberOfCardsPerRow)
+                if (index >= self.maxNumberOfCardsPerRow) && thisIsTheStartOfANewRow {
                     row += 1
                     rowData = Array<ImageModel>()
                 }
+                rowData.append(imageModel)
                 
                 // only return when at the end of the array
                 // or at the end of a row
                 if (index == (self.images.count - 1)) ||
-                    (cardPositionInRow == (self.maxNumberOfCardsPerRow - 1)) {
+                    (self.maxNumberOfCardsPerRow == rowData.count) {
                     return RowOfCards(images: rowData)
                 }
                 return nil
