@@ -5,21 +5,21 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="version" optional="YES" attributeType="String"/>
         <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tags" inverseName="taggedImage" inverseEntity="Tags"/>
     </entity>
     <entity name="Tags" representedClassName="Tags" syncable="YES" codeGenerationType="class">
-        <attribute name="sizedepth" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sizedeptharc" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sizedepth" optional="YES" attributeType="String"/>
+        <attribute name="sizedeptharc" optional="YES" attributeType="String"/>
         <attribute name="sizedescription" optional="YES" attributeType="String"/>
-        <attribute name="sizeheight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sizeheightarc" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sizescale" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sizeheight" optional="YES" attributeType="String"/>
+        <attribute name="sizeheightarc" optional="YES" attributeType="String"/>
+        <attribute name="sizescale" optional="YES" attributeType="String"/>
         <attribute name="sizeunits" optional="YES" attributeType="String"/>
-        <attribute name="sizewidth" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sizewidtharc" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sizewidth" optional="YES" attributeType="String"/>
+        <attribute name="sizewidtharc" optional="YES" attributeType="String"/>
         <relationship name="taggedImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageModel" inverseName="tags" inverseEntity="ImageModel"/>
     </entity>
     <elements>

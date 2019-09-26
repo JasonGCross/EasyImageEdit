@@ -15,6 +15,9 @@
 		F696C7CB233D182600B43374 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F696C7CA233D182600B43374 /* Preview Assets.xcassets */; };
 		F696C7CE233D182600B43374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F696C7CC233D182600B43374 /* LaunchScreen.storyboard */; };
 		F696C7D6233D1B1700B43374 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696C7D5233D1B1700B43374 /* ImageModel.swift */; };
+		F6CDEA82233D558900284AEC /* JGCDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CDEA81233D558900284AEC /* JGCDataManager.swift */; };
+		F6CDEA84233D5F3C00284AEC /* NSManagedObject+JSONDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CDEA83233D5F3C00284AEC /* NSManagedObject+JSONDecoding.swift */; };
+		F6CDEA86233D5F7C00284AEC /* NSManagedObject+JSONDeserializationToNSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CDEA85233D5F7C00284AEC /* NSManagedObject+JSONDeserializationToNSManagedObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		F696C7CD233D182600B43374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F696C7CF233D182600B43374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F696C7D5233D1B1700B43374 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		F6CDEA81233D558900284AEC /* JGCDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGCDataManager.swift; sourceTree = "<group>"; };
+		F6CDEA83233D5F3C00284AEC /* NSManagedObject+JSONDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+JSONDecoding.swift"; sourceTree = "<group>"; };
+		F6CDEA85233D5F7C00284AEC /* NSManagedObject+JSONDeserializationToNSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+JSONDeserializationToNSManagedObject.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,7 @@
 		F696C7BB233D182500B43374 /* LiveSurfaceImageEditor */ = {
 			isa = PBXGroup;
 			children = (
+				F696C7FC233D554100B43374 /* DataAccessLayer */,
 				F696C7BC233D182500B43374 /* AppDelegate.swift */,
 				F696C7C1233D182500B43374 /* SceneDelegate.swift */,
 				F696C7C5233D182500B43374 /* ContentView.swift */,
@@ -79,6 +86,16 @@
 				F696C7CA233D182600B43374 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F696C7FC233D554100B43374 /* DataAccessLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F6CDEA81233D558900284AEC /* JGCDataManager.swift */,
+				F6CDEA83233D5F3C00284AEC /* NSManagedObject+JSONDecoding.swift */,
+				F6CDEA85233D5F7C00284AEC /* NSManagedObject+JSONDeserializationToNSManagedObject.swift */,
+			);
+			path = DataAccessLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,10 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6CDEA84233D5F3C00284AEC /* NSManagedObject+JSONDecoding.swift in Sources */,
 				F696C7D6233D1B1700B43374 /* ImageModel.swift in Sources */,
 				F696C7C6233D182500B43374 /* ContentView.swift in Sources */,
+				F6CDEA82233D558900284AEC /* JGCDataManager.swift in Sources */,
 				F696C7C0233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld in Sources */,
 				F696C7BD233D182500B43374 /* AppDelegate.swift in Sources */,
+				F6CDEA86233D5F7C00284AEC /* NSManagedObject+JSONDeserializationToNSManagedObject.swift in Sources */,
 				F696C7C2233D182500B43374 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

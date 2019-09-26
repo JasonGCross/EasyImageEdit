@@ -7,6 +7,9 @@
 //
 
 import SwiftUI
+import CoreData
+import Combine
+
 
 
 struct ContentView: View {
@@ -41,11 +44,19 @@ struct MasterView: View {
 
     @Environment(\.managedObjectContext)
     var viewContext
-    
-
-    
 
     var body: some View {
+        // if there are no images, fetch them now
+        let fetch = NSFetchRequest<NSManagedObject>(entityName: "ImageModel")
+        fetch.predicate = NSPredicate(format: "index != nil")
+        if let foundImages = (try? self.viewContext.fetch(fetch)) as? Array<ImageModel>,
+            foundImages.count > 0 {
+            print("images already downloaded: \(foundImages)")
+        }
+        else {
+            JGCDataManager.sharedManager.fetchAllImageDetailsFromServer()
+        }
+        
         return CollectionViewOfCards(
             images:Array(images))
     }
