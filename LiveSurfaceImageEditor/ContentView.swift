@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             MasterView()
-                .navigationBarTitle("Master")
+                .navigationBarTitle("Images")
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
@@ -43,8 +43,11 @@ struct MasterView: View {
     var viewContext
     
 
+    
+
     var body: some View {
-        CollectionViewOfCards(images:Array(images))
+        return CollectionViewOfCards(
+            images:Array(images))
     }
 }
 
@@ -68,11 +71,21 @@ struct ContentView_Previews: PreviewProvider {
 /// A row of cards just displays cards in a horizontal stack
 struct RowOfCards: View {
     var images : Array<ImageModel>
+    @Binding var zoomFactor : Float
     
     var body: some View {
-        HStack {
+        
+        let cardWidth = CGFloat(self.zoomFactor) * Card.defaultCardSize.width
+        let cardHeight = CGFloat(self.zoomFactor) * Card.defaultCardSize.height
+        
+        return HStack {
             ForEach(images, id: \.uuid) { imageModel in
-                Text("\(imageModel.name!)")
+                Card(imageModel:imageModel, zoomFactor: self.$zoomFactor)
+                .fixedSize()
+                    .frame(
+                        width: cardWidth,
+                        height: cardHeight)
+                    .clipped(antialiased: false)
             }
         }
     }
@@ -80,34 +93,69 @@ struct RowOfCards: View {
 
 struct CollectionViewOfCards : View {
     var images: Array<ImageModel>
+    @State private var zoomFactor: Float = 1.0
     
-    let maxNumberOfCardsPerRow = 2
     
     var body: some View {
-        var row : Int = 0
         
+        let currentAvailableWidth : Float = 300
+        var row : Int = 0
+        let defaultCardWidth = Float(Card.defaultCardSize.width) * self.zoomFactor
+        let maxNumberOfCardsPerRow = Int(trunc(currentAvailableWidth / defaultCardWidth))
         var rowData : Array<ImageModel> = Array<ImageModel>()
-        return List {
-            ForEach(images, id: \.self) { imageModel -> RowOfCards? in
-                guard let index = self.images.firstIndex(of: imageModel) else {
-                    return nil
+        
+        return
+            VStack {
+                VStack {
+                    Slider(value: $zoomFactor, in: 0.25...3.0, step: 0.05)
+                }.padding()
+                List {
+                    ForEach(images, id: \.self) { imageModel -> RowOfCards? in
+                        guard let index = self.images.firstIndex(of: imageModel) else {
+                            return nil
+                        }
+                        
+                        let thisIsTheStartOfANewRow = 0 == (index % maxNumberOfCardsPerRow)
+                        if (index >= maxNumberOfCardsPerRow) && thisIsTheStartOfANewRow {
+                            row += 1
+                            rowData = Array<ImageModel>()
+                        }
+                        rowData.append(imageModel)
+                        
+                        // only return when at the end of the array
+                        // or at the end of a row
+                        if (index == (self.images.count - 1)) ||
+                            (maxNumberOfCardsPerRow == rowData.count) {
+                            return RowOfCards(images: rowData, zoomFactor: self.$zoomFactor)
+                        }
+                        return nil
+                    }
                 }
-                
-                let thisIsTheStartOfANewRow = 0 == (index % self.maxNumberOfCardsPerRow)
-                if (index >= self.maxNumberOfCardsPerRow) && thisIsTheStartOfANewRow {
-                    row += 1
-                    rowData = Array<ImageModel>()
-                }
-                rowData.append(imageModel)
-                
-                // only return when at the end of the array
-                // or at the end of a row
-                if (index == (self.images.count - 1)) ||
-                    (self.maxNumberOfCardsPerRow == rowData.count) {
-                    return RowOfCards(images: rowData)
-                }
-                return nil
-            }
         }
+            
+    }
+}
+
+/// a single collection view cell, which is called a "card"
+/// because it it like a sports card, with a photo and some metadata
+struct Card: View {
+    let imageModel: ImageModel
+    static let defaultCardSize = CGSize(width: 80, height: 120)
+    private static let defaultFontSize = Float(12)
+     @Binding var zoomFactor : Float
+    
+    var body: some View {
+        
+        let scaledFontSize = CGFloat(Card.defaultFontSize * zoomFactor)
+        let scaledFont = Font.system(
+            size:scaledFontSize,
+            weight: Font.Weight.regular,
+            design: Font.Design.default)
+        
+        return VStack {
+            Image(systemName:"photo")
+            Text("\(imageModel.name!)").font(scaledFont)
+            Text("\(imageModel.category!)").font(scaledFont)
+        }.padding()
     }
 }
