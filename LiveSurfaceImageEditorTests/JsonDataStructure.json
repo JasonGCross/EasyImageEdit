@@ -1,0 +1,23 @@
+{
+	"images": {
+		"UUID": {
+			"index": "index of this record",
+			"name": "name of image",
+			"number": "image number",
+			"image": "image filename",
+			"category": "category",
+			"version": "version number",
+			"tags": {
+				"sizedescription": "size description",
+				"sizescale": "item scale",
+				"sizewidth": "depicted item width",
+				"sizewidtharc": "if width is diameter or linear",
+				"sizeheight": "depicted item height",
+				"sizeheightarc": "if height is diameter or linear",
+				"sizedepth": "depicted item depth",
+				"sizedeptharc": "if depth is diameter or linear",
+				"sizeunits": "units of measure"
+			}
+		}
+	}
+}

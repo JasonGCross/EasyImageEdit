@@ -13,7 +13,7 @@ import CoreData
 
 final class JGCDataManager {
     
-     static let sharedManager = JGCDataManager()
+    static let sharedManager = JGCDataManager()
     
     lazy var managedObjectContext = {
         (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
