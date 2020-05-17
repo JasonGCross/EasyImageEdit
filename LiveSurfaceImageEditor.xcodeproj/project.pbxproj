@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F672EB932470A8EC003B388B /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672EB922470A8EC003B388B /* Tags.swift */; };
-		F672EB952470B8B8003B388B /* StringToUuidDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672EB942470B8B8003B388B /* StringToUuidDataTransformer.swift */; };
 		F696C7BD233D182500B43374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696C7BC233D182500B43374 /* AppDelegate.swift */; };
 		F696C7C0233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F696C7BE233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld */; };
 		F696C7C2233D182500B43374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696C7C1233D182500B43374 /* SceneDelegate.swift */; };
@@ -42,7 +41,6 @@
 
 /* Begin PBXFileReference section */
 		F672EB922470A8EC003B388B /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
-		F672EB942470B8B8003B388B /* StringToUuidDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToUuidDataTransformer.swift; sourceTree = "<group>"; };
 		F696C7B9233D182500B43374 /* LiveSurfaceImageEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveSurfaceImageEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F696C7BC233D182500B43374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F696C7BF233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiveSurfaceImageEditor.xcdatamodel; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				F696C7BE233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld */,
 				F696C7D5233D1B1700B43374 /* ImageModel.swift */,
 				F672EB922470A8EC003B388B /* Tags.swift */,
-				F672EB942470B8B8003B388B /* StringToUuidDataTransformer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,7 +281,6 @@
 				F696C7D6233D1B1700B43374 /* ImageModel.swift in Sources */,
 				F696C7C6233D182500B43374 /* ContentView.swift in Sources */,
 				F6CDEA82233D558900284AEC /* JGCDataManager.swift in Sources */,
-				F672EB952470B8B8003B388B /* StringToUuidDataTransformer.swift in Sources */,
 				F696C7C0233D182500B43374 /* LiveSurfaceImageEditor.xcdatamodeld in Sources */,
 				F6CB5C682443A7BE006EE663 /* MasterView.swift in Sources */,
 				F696C7BD233D182500B43374 /* AppDelegate.swift in Sources */,

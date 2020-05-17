@@ -19,16 +19,6 @@ struct ContentView: View {
         NavigationView {
             MasterView()
                 .navigationBarTitle("Images")
-                .navigationBarItems(
-                    leading: EditButton(),
-                    trailing: Button(
-                        action: {
-                            withAnimation { ImageModel.create(in: self.viewContext) }
-                        }
-                    ) { 
-                        Image(systemName: "plus")
-                    }
-                )
             Text("Detail view content goes here")
                 .navigationBarTitle("Detail")
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
