@@ -13,8 +13,8 @@ import CoreData
 /// because it it like a sports card, with a photo and some metadata
 struct Card: View {
     let imageModel: ImageModel
-    static let defaultCardSize = CGSize(width: 100, height: 200)
-    private static let defaultFontSize = Float(10)
+    static let defaultCardSize = CGSize(width: 120, height: 200)
+    private static let defaultFontSize = Float(9)
     private static let paddingInsideCard = CGFloat(3.0)
     @Binding var zoomFactor : Float
     
