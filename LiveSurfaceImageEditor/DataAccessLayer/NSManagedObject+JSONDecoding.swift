@@ -19,7 +19,16 @@ extension NSManagedObject {
         for (key, _) in entity.attributesByName {
             // do NOT overwrite existing values if the incoming does not contain those keys
             if nil != incoming[key] {
-                self.setValue(incoming[key], forKey:key)
+                // app crashes if we treat a string as a UUID
+                if ("uuid" == key),
+                    let uuidString = incoming[key] as? String,
+                    let realUuid: NSUUID = NSUUID(uuidString: uuidString) {
+                    
+                    self.setValue(realUuid, forKey: key)
+                }
+                else {
+                    self.setValue(incoming[key], forKey:key)
+                }
             }
         }
         

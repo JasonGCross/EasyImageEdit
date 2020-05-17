@@ -13,7 +13,7 @@ import CoreData
 /// because it it like a sports card, with a photo and some metadata
 struct Card: View {
     let imageModel: ImageModel
-    static let defaultCardSize = CGSize(width: 100, height: 140)
+    static let defaultCardSize = CGSize(width: 100, height: 200)
     private static let defaultFontSize = Float(10)
     private static let paddingInsideCard = CGFloat(3.0)
     @Binding var zoomFactor : Float
@@ -32,14 +32,36 @@ struct Card: View {
                 .aspectRatio(contentMode: ContentMode.fit)
                 .frame(width: Card.defaultCardSize.width * 0.9 * CGFloat(zoomFactor),
                        height: Card.defaultCardSize.width * 0.9 * CGFloat(zoomFactor))
-            Text("\(imageModel.name!)")
-                .font(scaledFont)
-                .foregroundColor(Color.white)
-                .lineLimit(1)
-            Text("\(imageModel.category!)")
-                .font(scaledFont)
-                .foregroundColor(Color.orange)
-                .lineLimit(1)
+            VStack(alignment: .leading) {
+                Text("\(imageModel.name ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.orange)
+                    .lineLimit(1)
+                Text("\(imageModel.number ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                Text("\(imageModel.image ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                Text("\(imageModel.category ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                Text("version: \(imageModel.version ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                Text("\(imageModel.tags?.sizewidth ?? "0") x \(imageModel.tags?.sizeheight ?? "0") \(imageModel.tags?.sizeunits ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                Text("scale: \(imageModel.tags?.sizescale ?? "")")
+                    .font(scaledFont)
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+            }
         }
             .frame(width: Card.defaultCardSize.width * CGFloat(zoomFactor),
                    height: Card.defaultCardSize.height * CGFloat(zoomFactor))

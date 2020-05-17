@@ -10,9 +10,7 @@ import SwiftUI
 import CoreData
 
 struct MasterView: View {
-    @FetchRequest(
-        sortDescriptors: [],
-        animation: .default) var images: FetchedResults<ImageModel>
+    @FetchRequest(fetchRequest: ImageModel.allImagesFetchRequest()) var images: FetchedResults<ImageModel>
 
     @Environment(\.managedObjectContext) var viewContext
 
@@ -32,10 +30,6 @@ struct MasterView: View {
                 // this custom publisher does not return any data. instead, the images are stored using CoreData.
                 // but we do need to upate the UI when the promises reports completion with no error
                 let _ = JGCDataManager.sharedManager.fetchAllImageDetailsFromServer()
-                    .sink(receiveCompletion: { (err) in
-                        print (err)
-                    }) { print ($0)
-                }
             }
         }
     }

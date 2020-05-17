@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14897.2" systemVersion="19A573a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ImageModel" representedClassName="ImageModel" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" valueTransformerName="StringToUuidDataTransformer" usesScalarValueType="NO"/>
         <attribute name="version" optional="YES" attributeType="String"/>
         <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tags" inverseName="taggedImage" inverseEntity="Tags"/>
     </entity>

@@ -16,7 +16,11 @@ extension ImageModel {
         
         newImageModel.uuid = UUID()
         newImageModel.name = "my sample image"
-        newImageModel.category = "testing"
+        newImageModel.number = "0661"
+        newImageModel.image = "0061.jpg"
+        newImageModel.category = "category.default"
+        newImageModel.version = "1"
+        newImageModel.tags = Tags.create(in: managedObjectContext)
         
         do {
             try  managedObjectContext.save()
@@ -26,6 +30,13 @@ extension ImageModel {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+    }
+    
+    static func allImagesFetchRequest() -> NSFetchRequest<ImageModel> {
+        let request: NSFetchRequest<ImageModel> = NSFetchRequest<NSManagedObject>(entityName: "ImageModel") as! NSFetchRequest<ImageModel>
+        request.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
+          
+        return request
     }
     
 }
